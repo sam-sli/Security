@@ -18,14 +18,14 @@ public class Token {
     public Integer id;
 
     @Column(unique = true)
-    public String token;
+    public String tokenvalue;
 
     @Enumerated(EnumType.STRING)
     public TokenType tokenType = TokenType.BEARER;
 
-    public boolean revoked;
+    private boolean revoked;
 
-    public boolean expired;
+    private boolean expired;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

@@ -5,7 +5,6 @@ import com.samcode.security.config.JwtService;
 import com.samcode.security.token.Token;
 import com.samcode.security.token.TokenRepository;
 import com.samcode.security.token.TokenType;
-import com.samcode.security.user.Role;
 import com.samcode.security.user.User;
 import com.samcode.security.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,10 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -71,7 +67,7 @@ public class AuthenticationService {
     private void saveUserToken(User user, String jwtToken) {
         var token = Token.builder()
                 .user(user)
-                .token(jwtToken)
+                .tokenvalue(jwtToken)
                 .tokenType(TokenType.BEARER)
                 .expired(false)
                 .revoked(false)
