@@ -18,7 +18,7 @@ public class Token {
     public Integer id;
 
     @Column(unique = true)
-    public String tokenvalue;
+    public String token;
 
     @Enumerated(EnumType.STRING)
     public TokenType tokenType = TokenType.BEARER;
